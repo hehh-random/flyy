@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +53,25 @@
       border-radius: 10px;
     }
 
+    /* Button */
+    #playBtn {
+      margin-top: 40px;
+      padding: 15px 25px;
+      font-size: 1.2em;
+      border: none;
+      border-radius: 20px;
+      background: #67e78b; /* blue */
+      color: #be3382;      /* pink */
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #ff6fa5, 0 0 20px #2ec4b6;
+    }
+
+    #playBtn:hover {
+      background: #ff4d8d;
+      transform: scale(1.08);
+    }
+
     /* Scene */
     .scene {
       position: absolute;
@@ -107,17 +125,17 @@
       from { transform: rotateY(165deg); }
       to { transform: rotateY(210deg); }
     }
-
   </style>
 </head>
 
 <body>
 
   <h1>Time been together 😏</h1>
-<div class="timer" id="loveTimer">Loading...</div>
-<div class="anniversary-msg" id="anniversaryMsg"></div>
-<button id="playBtn"> CLICK MEEEE💗 </button>
-<audio id="bgMusic" src="Sang-Rahiyo.mp3"></audio>
+  <div class="timer" id="loveTimer">Loading...</div>
+  <div class="anniversary-msg" id="anniversaryMsg"></div>
+
+  <button id="playBtn">CLICK MEEEE💗</button>
+  <audio id="bgMusic" src="Sang-Rahiyo.mp3"></audio>
 
   <div class="scene" id="scene"></div>
 
@@ -157,7 +175,7 @@
     setInterval(updateTimer, 1000);
     updateTimer();
 
-    // Generate butterflies dynamically
+    // butterflies
     const scene = document.getElementById("scene");
 
     for (let i = 0; i < 12; i++) {
@@ -174,10 +192,14 @@
       scene.appendChild(b);
     }
 
-    // Play music on first click (browser safe)
-    document.body.addEventListener("click", () => {
-      document.getElementById("bgMusic").play();
-    }, { once: true });
+    // music button
+    const playBtn = document.getElementById("playBtn");
+    const music = document.getElementById("bgMusic");
+
+    playBtn.addEventListener("click", () => {
+      music.play();
+      playBtn.innerText = "Playing... 💖";
+    });
   </script>
 
 </body>
