@@ -1,16 +1,16 @@
 #playBtn {
   margin-top: 40px;
-  padding: 20px 30px;
-  font-size: 2em;
+  padding: 15px 25px;
+  font-size: 1.2em;
   border: none;
-  border-radius: 30px;
-  background: #44dfd0; /* pink background */
-  color: #dc4294;      /* blue-green text */
+  border-radius: 20px;
+  background: #52e890; /* 💗 pink background */
+  color: #e44190;      /* 🌊 blue-green text */
   cursor: pointer;
   transition: 0.3s;
 }
 
 #playBtn:hover {
-  background: #72d2ba;
+  background: #c49a52;
   transform: scale(1.08);
 }
