@@ -4,13 +4,13 @@
   font-size: 1.2em;
   border: none;
   border-radius: 20px;
-  background: #c4537c; /* pink background */
-  color: #2fc776;      /* blue-green text */
+  background: #44dfd0; /* pink background */
+  color: #dc4294;      /* blue-green text */
   cursor: pointer;
   transition: 0.3s;
 }
 
 #playBtn:hover {
-  background: #426c96;
+  background: #72d2ba;
   transform: scale(1.08);
 }
