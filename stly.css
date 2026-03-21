@@ -1,11 +1,11 @@
 #playBtn {
   margin-top: 40px;
-  padding: 30px 40px;
-  font-size: 5em;
+  padding: 15px 25px;
+  font-size: 1.2em;
   border: none;
   border-radius: 20px;
   background: #df4a65;
-  color: rgb(49, 171, 102);
+  color: white;
   cursor: pointer;
   transition: 0.3s;
 }
