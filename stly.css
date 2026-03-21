@@ -8,6 +8,7 @@
   color: #e44190;      /* 🌊 blue-green text */
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 0 10px #ff6fa5, 0 0 20px #2ec4b6;
 }
 
 #playBtn:hover {
