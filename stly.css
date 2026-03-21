@@ -1,16 +1,16 @@
 #playBtn {
-  margin-top: 20px;
+  margin-top: 40px;
   padding: 10px 20px;
-  font-size: 1em;
+  font-size: 1.5em;
   border: none;
   border-radius: 20px;
-  background: #ff4d6d;
+  background: #df4a65;
   color: white;
   cursor: pointer;
   transition: 0.3s;
 }
 
 #playBtn:hover {
-  background: #ff1e4d;
+  background: #c21c40;
   transform: scale(1.05);
 }
