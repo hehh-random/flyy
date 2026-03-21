@@ -5,12 +5,12 @@
   border: none;
   border-radius: 20px;
   background: #df4a65;
-  color: white;
+  color: rgb(66, 207, 174);
   cursor: pointer;
   transition: 0.3s;
 }
 
 #playBtn:hover {
-  background: #c21c40;
+  background: #c62c4e;
   transform: scale(1.05);
 }
