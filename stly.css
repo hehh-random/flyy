@@ -1,0 +1,16 @@
+#playBtn {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 20px;
+  background: #ff4d6d;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#playBtn:hover {
+  background: #ff1e4d;
+  transform: scale(1.05);
+}
