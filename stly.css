@@ -5,7 +5,7 @@
   border: none;
   border-radius: 20px;
   background: #df4a65;
-  color: rgb(66, 207, 174);
+  color: #ff9ecb; /* 👈 change color  */
   cursor: pointer;
   transition: 0.3s;
 }
