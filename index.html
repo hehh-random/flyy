@@ -1,26 +1,41 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>teju😉</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>teju 😉</title>
+
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
       font-family: 'Segoe UI', sans-serif;
       color: white;
+      height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
       text-align: center;
-      padding: 20px;
+      overflow: hidden;
+      background: linear-gradient(hsl(207, 100%, 15%), hsl(207, 100%, 5%));
+      perspective: 800px;
     }
+
+    body * {
+      transform-style: preserve-3d;
+    }
+
     h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
     }
+
     .timer {
       font-size: 1.5em;
       margin-top: 20px;
@@ -29,6 +44,7 @@
       border-radius: 15px;
       background-color: rgba(255, 255, 255, 0.1);
     }
+
     .anniversary-msg {
       font-size: 1.3em;
       color: #ffcccc;
@@ -37,29 +53,73 @@
       padding: 10px 15px;
       border-radius: 10px;
     }
+
+    /* Scene */
+    .scene {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+
+    .butterfly {
+      position: absolute;
+      animation: fly linear infinite;
+    }
+
+    .butterfly::before,
+    .butterfly::after {
+      content: '';
+      position: absolute;
+      width: 30px;
+      height: 53px;
+      background-color: #4fd1ff;
+      clip-path: path('m0 24.949c 2.6262-5.4316 9.7782-15.554 16.428-20.546 4.798-3.6021 12.572-6.3892 12.572 2.4795 0 1.7712-1.0155 14.879-1.6111 17.007-2.0703 7.3984-9.6144 9.2854-16.325 8.1433 11.73 1.9964 14.714 8.6092 8.2697 15.222-12.239 12.559-17.591-3.1511-18.963-7.1766-.2514-.73797-.36904-1.0832-.37077-.78964z');
+      transform-origin: left;
+      box-shadow: 0 0 15px #0007 inset;
+    }
+
+    .butterfly::before {
+      animation: flapB 0.3s infinite alternate ease-in-out;
+    }
+
+    .butterfly::after {
+      animation: flapA 0.3s infinite alternate ease-in-out;
+    }
+
+    @keyframes fly {
+      0% {
+        transform: rotateX(90deg) rotate(0deg) translateX(200px) translateZ(-70vh);
+      }
+      100% {
+        transform: rotateX(90deg) rotate(-720deg) translateX(200px) translateZ(70vh);
+      }
+    }
+
+    @keyframes flapB {
+      from { transform: rotateY(15deg); }
+      to { transform: rotateY(-30deg); }
+    }
+
+    @keyframes flapA {
+      from { transform: rotateY(165deg); }
+      to { transform: rotateY(210deg); }
+    }
+
   </style>
 </head>
+
 <body>
-  <h1>Time been together😏 </h1>
+
+  <h1>Time been together 😏</h1>
   <div class="timer" id="loveTimer">Loading...</div>
   <div class="anniversary-msg" id="anniversaryMsg"></div>
+
   <audio id="bgMusic" src="Sang-Rahiyo.mp3"></audio>
 
-  <div class="scene">
-  <div class="butterfly" style="--random: 0.73428;"></div>
-  <div class="butterfly" style="--random: 0.82130;"></div>
-  <div class="butterfly" style="--random: 0.46092;"></div>
-  <div class="butterfly" style="--random: 0.05981;"></div>
-  <div class="butterfly" style="--random: 0.20235;"></div>
-  <div class="butterfly" style="--random: 0.91763;"></div>
-  <div class="butterfly" style="--random: 0.34480;"></div>
-  <div class="butterfly" style="--random: 0.27659;"></div>
-  <div class="butterfly" style="--random: 0.08087;"></div>
-  <div class="butterfly" style="--random: 0.66670;"></div>
-  <div class="butterfly" style="--random: 0.39124;"></div>
-  <div class="butterfly" style="--random: 0.15907;"></div>
-</div>
-
+  <div class="scene" id="scene"></div>
 
   <script>
     const startDate = new Date("March 8, 2026 00:00:00").getTime();
@@ -67,24 +127,27 @@
     const anniversaryMsgEl = document.getElementById("anniversaryMsg");
 
     function updateTimer() {
-      const now = new Date();
-      const nowTime = now.getTime();
-      const distance = nowTime - startDate;
+      const now = new Date().getTime();
+      const distance = now - startDate;
 
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((distance / (1000 * 60)) % 60);
+      const seconds = Math.floor((distance / 1000) % 60);
 
-      loveTimerEl.innerHTML = `<strong>${days}</strong> Days, <strong>${hours}</strong> Hours, <strong>${minutes}</strong> Minutes, <strong>${seconds}</strong> Seconds 🩷`;
+      loveTimerEl.innerHTML =
+        `<strong>${days}</strong> Days, 
+         <strong>${hours}</strong> Hours, 
+         <strong>${minutes}</strong> Minutes, 
+         <strong>${seconds}</strong> Seconds 🩷`;
 
-      // Check for monthly anniversary
       const start = new Date("March 8, 2026");
-      const yearDiff = now.getFullYear() - start.getFullYear();
-      const monthDiff = now.getMonth() - start.getMonth() + yearDiff * 12;
-      const isAnniversaryDay = now.getDate() === 1;
+      const nowDate = new Date();
 
-      if (isAnniversaryDay && monthDiff > 0) {
+      const yearDiff = nowDate.getFullYear() - start.getFullYear();
+      const monthDiff = nowDate.getMonth() - start.getMonth() + yearDiff * 12;
+
+      if (nowDate.getDate() === 8 && monthDiff > 0) {
         anniversaryMsgEl.innerHTML = `uhm uhm sir ji aaj ${monthDiff} months pure hue 😏`;
       } else {
         anniversaryMsgEl.innerHTML = "";
@@ -93,6 +156,30 @@
 
     setInterval(updateTimer, 1000);
     updateTimer();
+
+    // Generate butterflies dynamically
+    const scene = document.getElementById("scene");
+
+    for (let i = 0; i < 12; i++) {
+      const b = document.createElement("div");
+      b.className = "butterfly";
+
+      const random = Math.random();
+
+      b.style.left = Math.random() * 100 + "vw";
+      b.style.top = Math.random() * 100 + "vh";
+      b.style.animationDuration = (12 + random * 6) + "s";
+      b.style.animationDelay = (-Math.random() * 20) + "s";
+
+      scene.appendChild(b);
+    }
+
+    // Play music on first click (browser safe)
+    document.body.addEventListener("click", () => {
+      document.getElementById("bgMusic").play();
+    }, { once: true });
+
   </script>
+
 </body>
 </html>
